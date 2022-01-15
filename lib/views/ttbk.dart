@@ -525,7 +525,8 @@ class _TtbkState extends State<Ttbk> {
                         }
                         return ElevatedButton(
                           onPressed: () async {
-                            if (_controller.isNotEmpty) {
+                            print(itemList);
+                            if (_controller.isNotEmpty & itemList.isNotEmpty) {
                               final Uint8List? data =
                                   await _controller.toPngBytes();
                               if (data != null) {
@@ -536,18 +537,10 @@ class _TtbkState extends State<Ttbk> {
                                 file.writeAsBytesSync(data);
 
                                 alert(file.path);
-                                // TtbkBloc detailSuratJalanBloc =
-                                //     BlocProvider.of<TtbkBloc>(context,
-                                //         listen: false);
-                                // detailSuratJalanBloc.add(
-                                //   TtbkAksi(widget.suratJalanId!, file.path,
-                                //       itemList),
-                                // );
-
                               }
                             } else {
                               Fluttertoast.showToast(
-                                  msg: "Harap Isi Tanda Tangan !");
+                                  msg: "Harap Barang dan Isi Tanda Tangan !!!");
                             }
                           },
                           child: Text("Kirim"),

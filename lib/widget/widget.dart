@@ -121,11 +121,13 @@ class GSMCardList extends StatelessWidget {
   final String? text1;
   final String? text2;
   final String? text3;
+  final String? text4;
   const GSMCardList({
     Key? key,
     this.text1,
     this.text2,
     this.text3,
+    this.text4,
   }) : super(key: key);
 
   @override
@@ -156,8 +158,12 @@ class GSMCardList extends StatelessWidget {
                 height: 20,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Text(
+                    text4!,
+                    style: TextStyle(color: Color(0xffC0BFBF)),
+                  ),
                   Text(
                     text3!,
                     style: TextStyle(color: Color(0xffC0BFBF)),

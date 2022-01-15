@@ -19,28 +19,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String? keterangan;
   @override
   void initState() {
     SuratjalanBloc suratjalanBloc =
         BlocProvider.of<SuratjalanBloc>(context, listen: false);
     suratjalanBloc.add(SuratJalanAksi());
 
-    print("Load Home lagi");
     super.initState();
-  }
-
-  void _logOut() {
-    PopupMenuButton<String>(
-      // onSelected: handleClick,
-      itemBuilder: (BuildContext context) {
-        return {'Logout', 'Settings'}.map((String choice) {
-          return PopupMenuItem<String>(
-            value: choice,
-            child: Text(choice),
-          );
-        }).toList();
-      },
-    );
   }
 
   @override
@@ -117,9 +103,17 @@ class _HomePageState extends State<HomePage> {
         }
         if (state is SuratJalanLoaded) {
           return ListView.builder(
+            physics: ScrollPhysics(),
             shrinkWrap: true,
             itemCount: state.suratJalanRespone?.data?.length,
             itemBuilder: (BuildContext context, int index) {
+              if (state.suratJalanRespone!.data![index].tTBK == "driver") {
+                // ignore: unused_local_variable
+                keterangan = "Menunggu Verifikasi";
+              } else {
+                // ignore: unused_local_variable
+                keterangan = "Dalam Proses";
+              }
               return InkWell(
                 onTap: () {
                   if (state.suratJalanRespone?.data?[index].tTBK == "driver") {
@@ -141,6 +135,7 @@ class _HomePageState extends State<HomePage> {
                   text1: state.suratJalanRespone?.data?[index].sURATJALANNOMOR,
                   text2: state.suratJalanRespone?.data?[index].nAMA,
                   text3: state.suratJalanRespone?.data?[index].tANGGAL,
+                  text4: keterangan,
                 ),
               );
             },

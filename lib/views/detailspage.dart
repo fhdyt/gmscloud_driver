@@ -155,12 +155,6 @@ class _DetailPageState extends State<DetailPage> {
                                           .data![0]
                                           .bARANG![index]
                                           .sURATJALANBARANGQUANTITY!),
-                                      Text(' - '),
-                                      Text(state
-                                          .modelDetailSuratJalanRespone!
-                                          .data![0]
-                                          .bARANG![index]
-                                          .sURATJALANBARANGQUANTITYKOSONG!),
                                     ],
                                   ),
                                 ],
